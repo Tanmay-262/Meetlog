@@ -1,0 +1,29 @@
+/* Buttons */
+
+.btn-primary {
+  background: var(--gradient);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  color: white;
+  font-weight: 600;
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary);
+  padding: 12px 24px;
+  border-radius: var(--radius-md);
+  color: var(--primary-light);
+}
+
+.btn-outline:hover {
+  background: rgba(139, 92, 246, 0.1);
+}
+
+/* Cards (later use) */
+
+.card {
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}

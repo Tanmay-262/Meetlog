@@ -1,0 +1,16 @@
+:root {
+  --bg-main: #0f0f1a;
+  --bg-card: #1a1a2e;
+  --bg-navbar: #141423;
+
+  --primary: #8b5cf6;
+  --primary-light: #a78bfa;
+
+  --gradient: linear-gradient(135deg, #8b5cf6, #6366f1);
+
+  --text-main: #ffffff;
+  --text-muted: #9ca3af;
+
+  --radius-lg: 16px;
+  --radius-md: 10px;
+}

@@ -1,0 +1,39 @@
+/* Navbar */
+
+.navbar {
+  height: 70px;
+  background: var(--bg-navbar);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 40px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+  align-items: center;
+}
+
+/* Hero */
+
+.hero {
+  min-height: 90vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.hero-content {
+  max-width: 700px;
+}
