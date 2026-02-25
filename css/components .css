@@ -27,3 +27,24 @@
   padding: 20px;
   border-radius: var(--radius-lg);
 }
+/* Step Card */
+
+.step-card {
+  background: var(--bg-card);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+}
+
+.step-card h3 {
+  margin-bottom: 10px;
+}
+
+/* Review Card */
+
+.review-card {
+  min-width: 260px;
+  background: var(--bg-card);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+}
