@@ -26,16 +26,41 @@
   min-height: 90vh;
 
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
   text-align: center;
+
   padding: 40px 20px;
+
+  background:
+    linear-gradient(rgba(15,15,26,0.8), rgba(15,15,26,0.9)),
+    url("https://images.unsplash.com/photo-1521737604893-d14cc237f11d");
+
+  background-size: cover;
+  background-position: center;
+}
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: auto;
+  color: var(--text-muted);
 }
 
 .hero-content {
   max-width: 700px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  margin-top: 40px;
 }
 /* Sections */
 

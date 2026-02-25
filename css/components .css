@@ -2,18 +2,41 @@
 
 .btn-primary {
   background: var(--gradient);
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
   color: white;
+
+  padding: 20px 44px;   /* Bigger */
+
+  border-radius: 8px;
+
+  font-size: 18px;      /* Bigger text */
   font-weight: 600;
+
+  min-width: 200px;     /* Wider */
+
+  letter-spacing: 0.3px;
 }
 
 .btn-outline {
   background: transparent;
-  border: 1px solid var(--primary);
-  padding: 12px 24px;
-  border-radius: var(--radius-md);
+
+  border: 2px solid var(--primary);
+
   color: var(--primary-light);
+
+  padding: 20px 44px;
+
+  border-radius: 8px;
+
+  font-size: 18px;
+  font-weight: 600;
+
+  min-width: 200px;
+
+  letter-spacing: 0.3px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
 }
 
 .btn-outline:hover {
@@ -47,4 +70,11 @@
   background: var(--bg-card);
   padding: 20px;
   border-radius: var(--radius-lg);
+}
+/* Navbar CTA */
+
+.nav-cta {
+  padding: 10px 22px;
+  border-radius: 8px;
+  font-size: 14px;
 }
