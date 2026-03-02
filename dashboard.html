@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard - MeetLog</title>
+
+  <link rel="stylesheet" href="./css/variable.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components .css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>MeetLog</h2>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add.html">Add Interaction</a>
+        <a href="#">Analytics</a>
+        <a href="#">Settings</a>
+        <a href="index.html">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+      <div class="topbar">
+        <h1>Dashboard</h1>
+        <a href="add.html" class="btn-primary">+ Add New</a>
+      </div>
+
+      <!-- Stats Section -->
+      <div class="stats-row">
+
+        <div class="card stat-card">
+          <h4>Total Contacts</h4>
+          <p class="stat-number">24</p>
+        </div>
+
+        <div class="card stat-card">
+          <h4>This Month</h4>
+          <p class="stat-number">6</p>
+        </div>
+
+        <div class="card stat-card">
+          <h4>Pending Follow-ups</h4>
+          <p class="stat-number">3</p>
+        </div>
+
+      </div>
+
+      <!-- Search -->
+      <div class="search-row">
+        <input type="text" placeholder="Search by name or company...">
+      </div>
+
+      <h2 class="section-heading">Recent Interactions</h2>
+
+      <div class="cards-grid" id="interactionContainer">
+</div>
+
+    </main>
+
+  </div>
+<script src="./js/dashboard.js"></script>
+</body>
+</html>
