@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Interaction - MeetLog</title>
+
+  <link rel="stylesheet" href="./css/variable.css">
+  <link rel="stylesheet" href="./css/base.css">
+  <link rel="stylesheet" href="./css/layout.css">
+  <link rel="stylesheet" href="./css/components .css">
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h2>MeetLog</h2>
+
+      <nav>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="add.html">Add Interaction</a>
+        <a href="#">Analytics</a>
+        <a href="#">Settings</a>
+        <a href="index.html">Logout</a>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="dashboard-main">
+
+      <div class="topbar">
+        <h1>Add New Interaction</h1>
+      </div>
+
+      <div class="form-container">
+
+        <form id="interactionForm" class="interaction-form">
+
+          <div class="form-group">
+            <label>Name *</label>
+            <input type="text" id="name" required>
+          </div>
+
+          <div class="form-group">
+            <label>Company</label>
+            <input type="text" id="company">
+          </div>
+
+          <div class="form-group">
+            <label>Event / Location</label>
+            <input type="text" id="event">
+          </div>
+
+          <div class="form-group">
+            <label>Notes</label>
+            <textarea id="notes"></textarea>
+          </div>
+
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">
+              Save Interaction
+            </button>
+          </div>
+
+        </form>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <script src="./js/add.js"></script>
+
+</body>
+</html>
