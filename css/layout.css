@@ -1,23 +1,59 @@
 /* Navbar */
 
 .navbar {
-  height: 70px;
-  background: var(--bg-navbar);
+  height: 75px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 0 40px;
+  padding: 0 60px;
+
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+
+  background: rgba(20, 20, 35, 0.7);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
+.nav-links a {
+  position: relative;
+  color: var(--text-muted);
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: var(--primary-light);
+}
+
+/* Underline animation */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--primary);
+  transition: 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.logo h2 {
+  font-weight: 700;
+  letter-spacing: 1px;
+}
 .nav-links {
   display: flex;
-  gap: 25px;
   align-items: center;
+  gap: 35px;   /* Increase spacing */
 }
 
 /* Hero */
@@ -151,4 +187,7 @@
 .contact-form textarea {
   resize: none;
   height: 120px;
+}
+.nav-links .nav-cta {
+  margin-left: 20px;
 }
