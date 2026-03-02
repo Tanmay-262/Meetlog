@@ -53,7 +53,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       card.innerHTML = `
         <div class="card-header">
-          <h4>${item.name}</h4>
+          <h4>
+          <a href="view.html?id=${item.id}" style="color:white; text-decoration:none;">
+           ${item.name}
+          </a>
+          </h4>
           <button class="delete-btn" data-id="${item.id}">✕</button>
         </div>
         <p>${item.company || "—"} | ${item.event || "—"}</p>
