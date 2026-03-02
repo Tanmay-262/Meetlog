@@ -380,3 +380,15 @@
 .detail-item p {
   font-size: 16px;
 }
+
+.edit-btn {
+  margin-right: 10px;
+  text-decoration: none;
+  color: #60a5fa;
+  font-size: 16px;
+  transition: 0.2s ease;
+}
+
+.edit-btn:hover {
+  opacity: 0.8;
+}

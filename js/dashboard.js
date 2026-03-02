@@ -52,17 +52,22 @@ document.addEventListener("DOMContentLoaded", function () {
       card.className = "card interaction-card";
 
       card.innerHTML = `
-        <div class="card-header">
-          <h4>
-          <a href="view.html?id=${item.id}" style="color:white; text-decoration:none;">
-           ${item.name}
-          </a>
-          </h4>
-          <button class="delete-btn" data-id="${item.id}">✕</button>
-        </div>
-        <p>${item.company || "—"} | ${item.event || "—"}</p>
-        <small>${new Date(item.date).toLocaleDateString()}</small>
-      `;
+      <div class="card-header">
+      <h4>
+      <a href="view.html?id=${item.id}" style="color:white; text-decoration:none;">
+        ${item.name}
+      </a>
+     </h4>
+
+     <div>
+      <a href="add.html?id=${item.id}" class="edit-btn">✏️</a>
+      <button class="delete-btn" data-id="${item.id}">✕</button>
+     </div>
+     </div>
+
+     <p>${item.company || "—"} | ${item.event || "—"}</p>
+     <small>${new Date(item.date).toLocaleDateString()}</small>
+    `;
 
       container.appendChild(card);
     });
