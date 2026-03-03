@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const notes = document.getElementById("notes").value.trim();
 
     if (!name) {
-      alert("Name is required.");
+      showToast("Name is required.", "error");
       return;
     }
 
@@ -60,7 +60,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     localStorage.setItem("interactions", JSON.stringify(data));
 
-    window.location.href = "dashboard.html";
+    showToast(editId ? "Interaction updated!" : "Interaction added!", "success");
+
+     setTimeout(() => {
+      window.location.href = "dashboard.html";
+     }, 800);
   });
 
 });
