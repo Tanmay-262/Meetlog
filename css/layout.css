@@ -18,6 +18,14 @@
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
+nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  transition: transform 0.35s ease;
+  backdrop-filter: blur(10px);
+}
 
 .nav-links a {
   position: relative;
@@ -70,21 +78,35 @@
   padding: 40px 20px;
 
   position: relative;
-  background: url('../images/network.jpg') center/cover no-repeat;
+  background: url('https://images.unsplash.com/photo-1556761175-b413da4baf72') center/cover no-repeat;
 
   background-size: cover;
   background-position: center;
 }
+
+.hero-content {
+  position: relative;
+  max-width: 700px;
+  z-index: 2;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(5, 8, 30, 0.75);
+  backdrop-filter: blur(2px);
+}
+
 .hero h1 {
   font-size: 48px;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
 .hero p {
   font-size: 18px;
-  max-width: 600px;
-  margin: auto;
-  color: var(--text-muted);
+  opacity: 0.8;
+  margin-bottom: 30px;
 }
 
 
@@ -94,10 +116,6 @@
   inset: 0;
   background: rgba(10, 10, 25, 0.7);
 }
-
-.hero-content {
- position: relative;
-  z-index: 2;}
 
 .hero-buttons {
   display: flex;
@@ -133,6 +151,17 @@
   gap: 25px;
   max-width: 900px;
   margin: auto;
+}
+.steps-section::before{
+  content: "";
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle,#6c5ce7,transparent);
+  filter: blur(150px);
+  top: -100px;
+  left: -100px;
+  opacity: 0.25;
 }
 /* benefits */
 .benefits-section {
