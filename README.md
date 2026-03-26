@@ -1,14 +1,15 @@
-# MeetLog – Personal Interaction Tracker
+# MeetLog – Professional Interaction Tracker
 
-MeetLog is a client-side full-stack web application built using HTML, CSS, and JavaScript.  
-It helps users record, manage, and review professional interactions such as conferences, seminars, and meetings.
+MeetLog is a full-stack web application that helps users record, manage, and review professional interactions such as conferences, seminars, meetings, and networking events.
+
+The project now includes authentication, backend API, and cloud database support.
 
 ---
 
-## 🚀 Features
+# 🚀 Features
 
+## Frontend
 - Add new interaction details
-- Store data using localStorage
 - Dynamic dashboard rendering
 - Real-time search and filtering
 - Delete interactions
@@ -16,89 +17,206 @@ It helps users record, manage, and review professional interactions such as conf
 - Dynamic statistics (Total, Monthly, Pending)
 - Responsive dark-themed UI
 
+## Backend
+- User Authentication (Signup & Login)
+- Secure password hashing using bcrypt
+- JWT-based authentication
+- REST API architecture
+- Cloud database integration
+
 ---
 
-## 🧱 Tech Stack
+# 🧱 Tech Stack
 
+## Frontend
 - HTML5
-- CSS3 (Custom Design System)
+- CSS3
 - JavaScript (Vanilla JS)
-- Web Storage API (localStorage)
 
-No backend or database is used.  
-All data is stored securely in the user's browser.
+## Backend
+- Node.js
+- Express.js
+
+## Database
+- Neon PostgreSQL
+
+## Authentication
+- JWT (jsonwebtoken)
+- bcrypt
 
 ---
 
-## 🏗️ Project Structure
-
-```
+# 🏗️ Project Structure
 MeetLog/
 │
-├── index.html
-├── dashboard.html
-├── add.html
-├── view.html
+├── frontend/
+│ ├── index.html
+│ ├── dashboard.html
+│ ├── add.html
+│ ├── view.html
 │
-├── css/
-│   ├── variables.css
-│   ├── base.css
-│   ├── layout.css
-│   └── components.css
+│ ├── css/
+│ │ ├── variables.css
+│ │ ├── base.css
+│ │ ├── layout.css
+│ │ └── components.css
 │
-├── js/
-│   ├── add.js
-│   ├── dashboard.js
-│   └── view.js
+│ ├── js/
+│ │ ├── add.js
+│ │ ├── dashboard.js
+│ │ └── view.js
 │
+├── backend/
+│ ├── server.js
+│ ├── db.js
+│ └── routes/
+│ └── auth.js
+│
+├── .env
+├── package.json
 └── README.md
-```
+
 
 ---
 
-## 🔄 Application Flow
+# 🔄 Application Flow
 
-1. User adds an interaction.
-2. Data is stored in localStorage.
-3. Dashboard dynamically renders interactions.
-4. Stats update automatically.
-5. Users can search, delete, and view full details.
+### User Flow
 
----
-
-## 📊 Dynamic Features
-
-- Statistics are calculated from stored data.
-- Search filters interactions live.
-- Delete updates UI instantly.
-- View page retrieves interaction using URL parameters.
+1. User signs up or logs in
+2. User adds new interaction
+3. Data sent to backend API
+4. Backend stores data in Neon database
+5. Dashboard dynamically renders interactions
+6. Stats update automatically
 
 ---
 
-## 🎯 Purpose
+# 📡 API Endpoints
 
-This project was developed as part of a Web Technologies PBL (Project-Based Learning) assignment.
+## Authentication
 
-It demonstrates:
-- DOM manipulation
-- Client-side storage
-- Dynamic rendering
+### Signup
+POST /api/auth/signup
+
+### Login
+POST /api/auth/login
+
+
+---
+
+# 🗄️ Database
+
+This project uses Neon PostgreSQL
+
+## Tables
+
+### Users Table
+
+- id
+- name
+- email
+- password
+- created_at
+
+### Interactions Table
+
+- id
+- user_id
+- name
+- company
+- event
+- notes
+- created_at
+
+---
+
+# ⚙️ Installation
+
+Clone repository
+
+---
+
+# 🗄️ Database
+
+This project uses Neon PostgreSQL
+
+## Tables
+
+### Users Table
+
+- id
+- name
+- email
+- password
+- created_at
+
+### Interactions Table
+
+- id
+- user_id
+- name
+- company
+- event
+- notes
+- created_at
+
+---
+
+# ⚙️ Installation
+
+Clone repository
+git clone https://github.com/Tanmay-262/meetlog.git
+
+Install dependencies
+npm install
+Run Backend
+npm run dev
+Server runs on
+
+
+---
+
+# 🎯 Purpose
+
+This project demonstrates:
+
+- Full-stack development
+- REST API development
+- Authentication & authorization
+- Database integration
 - Clean UI architecture
-- Multi-page web application structure
+- Scalable application structure
 
 ---
 
-## 🔮 Future Improvements
+# 🔮 Future Improvements
 
-- Edit interaction feature (Complete CRUD)
-- Speech-to-text integration
+- Edit interaction feature
 - Follow-up reminders
-- Backend database integration
-- User authentication
+- Analytics dashboard
+- Voice input (Speech-to-text)
+- Deployment
+- Multi-user collaboration
 
 ---
 
-## 👨‍💻 Developed By
+# 🚀 Current Status
+
+- Frontend UI Complete
+- Backend Setup Complete
+- Signup API Working
+- Login API In Progress
+
+---
+
+# 👨‍💻 Developed By
 
 Tanmay Jain  
-B.Tech CSE  
+B.Tech CSE
+
+---
+
+# 📄 License
+
+MIT License
