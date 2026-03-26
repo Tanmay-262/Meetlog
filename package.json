@@ -1,0 +1,32 @@
+{
+  "name": "meetlog",
+  "version": "1.0.0",
+  "description": "MeetLog is a client-side full-stack web application built using HTML, CSS, and JavaScript.  \r It helps users record, manage, and review professional interactions such as conferences, seminars, and meetings.",
+  "main": "index.js",
+  "scripts": {
+  "start": "node backend/server.js",
+  "dev": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanmay-262/Meetlog.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanmay-262/Meetlog/issues"
+  },
+  "homepage": "https://github.com/Tanmay-262/Meetlog#readme",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "pg": "^8.20.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
