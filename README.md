@@ -47,34 +47,34 @@ The project now includes authentication, backend API, and cloud database support
 ---
 
 # 🏗️ Project Structure
-MeetLog/
+MeetLog/  
 │
-├── frontend/
-│ ├── index.html
-│ ├── dashboard.html
-│ ├── add.html
-│ ├── view.html
+├── frontend/  
+│ ├── index.html  
+│ ├── dashboard.html   
+│ ├── add.html   
+│ ├── view.html   
 │
-│ ├── css/
-│ │ ├── variables.css
-│ │ ├── base.css
-│ │ ├── layout.css
-│ │ └── components.css
+│ ├── css/   
+│ │ ├── variables.css   
+│ │ ├── base.css    
+│ │ ├── layout.css   
+│ │ └── components.css   
 │
-│ ├── js/
-│ │ ├── add.js
-│ │ ├── dashboard.js
-│ │ └── view.js
+│ ├── js/   
+│ │ ├── add.js   
+│ │ ├── dashboard.js   
+│ │ └── view.js   
 │
-├── backend/
-│ ├── server.js
-│ ├── db.js
-│ └── routes/
-│ └── auth.js
+├── backend/   
+│ ├── server.js   
+│ ├── db.js   
+│ └── routes/   
+│ └── auth.js   
 │
-├── .env
-├── package.json
-└── README.md
+├── .env   
+├── package.json   
+└── README.md   
 
 
 ---
