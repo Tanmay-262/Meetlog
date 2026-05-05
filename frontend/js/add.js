@@ -1,29 +1,30 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
   const form = document.getElementById("interactionForm");
 
   const params = new URLSearchParams(window.location.search);
-  const editId = Number(params.get("id"));
-
-  let data = JSON.parse(localStorage.getItem("interactions")) || [];
+  const editId = params.get("id");
 
   // ===== EDIT MODE =====
   if (editId) {
-
-    const interaction = data.find(item => item.id === editId);
-
-    if (interaction) {
-      document.getElementById("name").value = interaction.name;
-      document.getElementById("company").value = interaction.company;
-      document.getElementById("event").value = interaction.event;
-      document.getElementById("notes").value = interaction.notes;
-
-      document.querySelector(".topbar h1").textContent = "Edit Interaction";
+    try {
+      const interaction = await apiGet(`/interactions/${editId}`);
+      
+      if (interaction && !interaction.error) {
+        document.getElementById("name").value = interaction.name || "";
+        document.getElementById("company").value = interaction.company || "";
+        document.getElementById("event").value = interaction.event || "";
+        document.getElementById("notes").value = interaction.notes || "";
+  
+        document.querySelector(".topbar h1").textContent = "Edit Interaction";
+      }
+    } catch (err) {
+      showToast("Error loading interaction", "error");
     }
   }
 
   // ===== FORM SUBMIT =====
-  form.addEventListener("submit", function (e) {
+  form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
     const name = document.getElementById("name").value.trim();
@@ -36,35 +37,36 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    if (editId) {
-      // UPDATE EXISTING
-      data = data.map(item =>
-        item.id === editId
-          ? { ...item, name, company, event, notes }
-          : item
-      );
+    const payload = { name, company, event, notes };
 
-    } else {
-      // CREATE NEW
-      const interaction = {
-        id: Date.now(),
-        name,
-        company,
-        event,
-        notes,
-        date: new Date().toISOString()
-      };
+    try {
+      if (editId) {
+        // UPDATE EXISTING
+        const res = await apiPut(`/interactions/${editId}`, payload);
+        if (res.ok) {
+          showToast("Interaction updated!", "success");
+        } else {
+          showToast("Failed to update", "error");
+          return;
+        }
+      } else {
+        // CREATE NEW
+        const res = await apiPost("/interactions", payload);
+        if (res.ok) {
+          showToast("Interaction added!", "success");
+        } else {
+          showToast("Failed to add", "error");
+          return;
+        }
+      }
 
-      data.push(interaction);
+      setTimeout(() => {
+        window.location.href = "dashboard.html";
+      }, 800);
+      
+    } catch (err) {
+      showToast("An error occurred", "error");
     }
-
-    localStorage.setItem("interactions", JSON.stringify(data));
-
-    showToast(editId ? "Interaction updated!" : "Interaction added!", "success");
-
-     setTimeout(() => {
-      window.location.href = "dashboard.html";
-     }, 800);
   });
 
 });

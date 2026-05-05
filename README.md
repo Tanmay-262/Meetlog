@@ -206,7 +206,7 @@ This project demonstrates:
 - Frontend UI Complete
 - Backend Setup Complete
 - Signup API Working
-- Login API In Progress
+- Login API Complete
 
 ---
 

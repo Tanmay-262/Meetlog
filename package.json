@@ -4,8 +4,8 @@
   "description": "MeetLog is a client-side full-stack web application built using HTML, CSS, and JavaScript.  \r It helps users record, manage, and review professional interactions such as conferences, seminars, and meetings.",
   "main": "index.js",
   "scripts": {
-  "start": "node backend/server.js",
-  "dev": "nodemon backend/server.js"
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
   },
   "repository": {
     "type": "git",

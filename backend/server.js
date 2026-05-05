@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
+const interactionRoutes = require("./routes/interactions");
 
 const pool = require("./db");
 
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 
 app.use("/api/auth", authRoutes);
+app.use("/api/interactions", interactionRoutes);
 
 app.get("/", (req, res) => {
   res.send("MeetLog API running");

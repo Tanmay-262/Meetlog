@@ -1,9 +1,21 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
 
   const container = document.getElementById("interactionContainer");
   const searchInput = document.getElementById("searchInput");
 
-  let data = JSON.parse(localStorage.getItem("interactions")) || [];
+  let data = [];
+
+  // ===== Load Data from API =====
+  async function loadData() {
+    try {
+      data = await apiGet("/interactions");
+      updateStats(data);
+      renderCards(data);
+    } catch (err) {
+      console.error("Failed to load interactions:", err);
+      showToast("Failed to load data", "error");
+    }
+  }
 
   // ===== Stats Function =====
   function updateStats(filteredData) {
@@ -20,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let thisMonthCount = 0;
 
     filteredData.forEach(item => {
-      const itemDate = new Date(item.date);
+      const itemDate = new Date(item.created_at);
       if (
         itemDate.getMonth() === currentMonth &&
         itemDate.getFullYear() === currentYear
@@ -39,52 +51,51 @@ document.addEventListener("DOMContentLoaded", function () {
   // ===== Render Function =====
   function renderCards(filteredData) {
 
-  // Always clear first
-  container.innerHTML = "";
+    // Always clear first
+    container.innerHTML = "";
 
-  // If no data → show empty state
-  if (filteredData.length === 0) {
-    container.innerHTML = `
-      <div class="empty-state">
-        <h3>No interactions yet</h3>
-        <p>Start building your professional network today.</p>
-        <a href="add.html" class="btn-primary" style="margin-top:20px; display:inline-block;">
-          Add Interaction
-        </a>
-      </div>
-    `;
-    return;
+    // If no data → show empty state
+    if (filteredData.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <h3>No interactions yet</h3>
+          <p>Start building your professional network today.</p>
+          <a href="add.html" class="btn-primary" style="margin-top:20px; display:inline-block;">
+            Add Interaction
+          </a>
+        </div>
+      `;
+      return;
+    }
+
+    // Otherwise render cards normally
+    filteredData.forEach(item => {
+
+      const card = document.createElement("div");
+      card.className = "card interaction-card";
+
+      card.innerHTML = `
+        <div class="card-header">
+          <h4>
+            <a href="view.html?id=${item.id}" style="color:white; text-decoration:none;">
+              ${item.name}
+            </a>
+          </h4>
+          <div>
+            <a href="add.html?id=${item.id}" class="edit-btn">✏️</a>
+            <button class="delete-btn" data-id="${item.id}">✕</button>
+          </div>
+        </div>
+        <p>${item.company || "—"} | ${item.event || "—"}</p>
+        <small>${new Date(item.created_at).toLocaleDateString()}</small>
+      `;
+
+      container.appendChild(card);
+    });
   }
 
-  // Otherwise render cards normally
-  filteredData.forEach(item => {
-
-    const card = document.createElement("div");
-    card.className = "card interaction-card";
-
-    card.innerHTML = `
-      <div class="card-header">
-        <h4>
-          <a href="view.html?id=${item.id}" style="color:white; text-decoration:none;">
-            ${item.name}
-          </a>
-        </h4>
-        <div>
-          <a href="add.html?id=${item.id}" class="edit-btn">✏️</a>
-          <button class="delete-btn" data-id="${item.id}">✕</button>
-        </div>
-      </div>
-      <p>${item.company || "—"} | ${item.event || "—"}</p>
-      <small>${new Date(item.date).toLocaleDateString()}</small>
-    `;
-
-    container.appendChild(card);
-  });
-}
-
   // Initial load
-  updateStats(data);
-  renderCards(data);
+  await loadData();
 
   // ===== Search Functionality =====
   searchInput.addEventListener("input", function () {
@@ -101,25 +112,30 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   // ===== Delete Functionality =====
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", async function (e) {
 
-   if (e.target.classList.contains("delete-btn")) {
+    if (e.target.classList.contains("delete-btn")) {
 
-    const id = Number(e.target.getAttribute("data-id"));
+      const id = e.target.getAttribute("data-id");
 
-    // Confirm before deleting
-    const confirmDelete = confirm("Are you sure you want to delete this interaction?");
-    if (!confirmDelete) return;
+      // Confirm before deleting
+      const confirmDelete = confirm("Are you sure you want to delete this interaction?");
+      if (!confirmDelete) return;
 
-    data = data.filter(item => item.id !== id);
-
-    localStorage.setItem("interactions", JSON.stringify(data));
-
-    showToast("Interaction deleted.", "success");
-
-    updateStats(data);
-    renderCards(data);
-   }
-   });
+      try {
+        const res = await apiDelete(`/interactions/${id}`);
+        if (res.ok) {
+          showToast("Interaction deleted.", "success");
+          data = data.filter(item => item.id != id);
+          updateStats(data);
+          renderCards(data);
+        } else {
+          showToast("Failed to delete", "error");
+        }
+      } catch (err) {
+        showToast("Error deleting interaction", "error");
+      }
+    }
+  });
 
 });
